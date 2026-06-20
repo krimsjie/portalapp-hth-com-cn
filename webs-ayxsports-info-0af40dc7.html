@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏体育 · 资讯与查询参考</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0f1f3;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #2d2f33;
+            padding: 24px 20px 48px;
+        }
+
+        .page-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e4e7ed;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            color: #1f2937;
+        }
+
+        .nav-brand span {
+            background: #1f2937;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 30px;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-size: 0.9rem;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #111827;
+            border-bottom-color: #9ca3af;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e6ed;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            padding: 32px 28px;
+            margin-bottom: 28px;
+        }
+
+        .card-soft {
+            background: #fafbfc;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #1f2937;
+            letter-spacing: -0.2px;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+
+        .card p, .card li {
+            color: #3f434a;
+        }
+
+        .card p {
+            margin-bottom: 12px;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        hr.divider-light {
+            border: 0;
+            height: 1px;
+            background: #e2e6ed;
+            margin: 24px 0 28px;
+        }
+
+        .flex-scenes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .scene-item {
+            flex: 1 1 200px;
+            background: #f8f9fb;
+            border-radius: 14px;
+            border: 1px solid #e8ebf0;
+            padding: 20px 18px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-item:hover {
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+        }
+
+        .scene-item h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .scene-item p {
+            font-size: 0.92rem;
+            color: #4b5563;
+            margin-bottom: 0;
+        }
+
+        .faq-item {
+            padding: 16px 0 12px;
+            border-bottom: 1px solid #eceff4;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .faq-answer {
+            font-size: 0.93rem;
+            color: #555b66;
+        }
+
+        .inline-link {
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dotted #b0b7c4;
+            transition: border-color 0.2s, background 0.1s;
+            padding: 0 2px;
+        }
+
+        .inline-link:hover {
+            border-bottom-style: solid;
+            border-color: #1f2937;
+            background: #f0f1f5;
+        }
+
+        .footnote {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 36px;
+            border-top: 1px solid #dfe3ea;
+            padding-top: 24px;
+        }
+
+        .footnote a {
+            color: #1f2937;
+            text-decoration: none;
+            border-bottom: 1px solid #ccd0d8;
+        }
+
+        .footnote a:hover {
+            border-bottom-color: #1f2937;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 14px 12px 36px;
+            }
+
+            .nav-bar {
+                padding: 12px 18px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .card {
+                padding: 24px 18px;
+            }
+
+            .flex-scenes {
+                flex-direction: column;
+            }
+
+            .scene-item {
+                flex: 1 1 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 导航区 -->
+    <header class="nav-bar">
+        <div class="nav-brand">
+            ⚡ 爱体育 · 参考
+            <span>查询</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#overview">概览</a></li>
+            <li><a href="#scenes">场景</a></li>
+            <li><a href="#faq">常见说明</a></li>
+            <li><a href="https://webs-ayxsports.com">爱游戏体育</a></li>
+        </ul>
+    </header>
+
+    <!-- 核心介绍 / hero 区 -->
+    <section class="card" id="overview">
+        <h2>日常信息查询 · 对照与延伸</h2>
+        <p>
+            不管是浏览比赛日程、核对赛事规则，还是简单翻阅运动相关的科普内容，很多人都习惯先打开一个信息集中的页面做对照。
+            这里并非要替代专业平台，而是提供一个<span class="inline-link">轻量参考</span>，把常见问题的线索、结构化的场景和提示整理在一起，
+            方便随手翻阅。如果你需要更完整的资源库，可以直接前往
+            <a href="https://webs-ayxsports.com" class="inline-link">爱游戏体育</a>
+            做进一步了解。
+        </p>
+        <p style="margin-top: 8px;">
+            这个页面围绕「查询—对照—延伸」的思路展开，不追求面面俱到，而是把日常最常遇到的几个侧面用卡片方式呈现。
+            以下三个场景模块分别对应不同查询习惯，你可以根据自己的需求快速定位。
+        </p>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section class="card" id="scenes">
+        <h2>三个常用查询场景</h2>
+        <div class="flex-scenes">
+            <div class="scene-item">
+                <h3>📋 规则对照</h3>
+                <p>当你想快速确认某项运动的基础规则、计分方式或常见术语，不必翻找长文档。一份简洁的对照表往往比搜索引擎更直观。你可以先在此处获得脉络，再通过<a href="https://webs-ayxsports.com" class="inline-link">爱游戏体育</a>查阅更细的条目。</p>
+            </div>
+            <div class="scene-item">
+                <h3>📆 赛事与日程</h3>
+                <p>联赛、锦标赛、资格赛……时间分散在各处。把主流赛事的阶段和大致时间区间梳理出来，便于做个人规划。实际赛程变动频繁，建议以官方渠道为准，同时可在<a href="https://webs-ayxsports.com" class="inline-link">爱游戏体育</a>获取即时更新。</p>
+            </div>
+            <div class="scene-item">
+                <h3>🔍 术语延伸阅读</h3>
+                <p>看到不熟悉的运动名词、战术描述或统计缩写，先别急着走开。这里收录了一组高频词条和简短解读，帮你建立基本印象。想深入理解背景或数据来源，<a href="https://webs-ayxsports.com" class="inline-link">爱游戏体育</a>的专题文章可以继续翻看。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 补充说明：日常查询小提示 -->
+    <section class="card card-soft">
+        <h2>查询时的一点提示</h2>
+        <p>
+            信息类页面很容易让人产生“看完就记住了”的错觉。实际上，运动相关的内容变化很快——规则可能微调、赛事时间会因各种原因更改、
+            统计数据也在不断更新。因此，<strong>养成核对多个来源的习惯</strong>总是有益的。这个页面提供的摘要和场景划分，
+            更多是帮你<strong>建立框架</strong>，而非替代实时搜索或专业数据库。
+        </p>
+        <p>
+            如果你在查找资料时发现某个说法与其他来源有明显出入，不妨先确认一下日期和版本。很多歧义其实来自不同年份的规则文本。
+            在<a href="https://webs-ayxsports.com" class="inline-link">爱游戏体育</a>上，内容通常会标注更新时间，可以作为比对参考。
+        </p>
+    </section>
+
+    <!-- 常见说明 FAQ 摘要 -->
+    <section class="card" id="faq">
+        <h2>常见说明与简答</h2>
+        <div class="faq-item">
+            <div class="faq-question">❓ 为什么有些赛事信息这里没有列出？</div>
+            <div class="faq-answer">这个页面聚焦的是常见、稳定的框架性内容。非常规赛事、地区性联赛或临时性活动，建议通过<a href="https://webs-ayxsports.com" class="inline-link">爱游戏体育</a>的搜索或分类索引查找，那边覆盖范围更广。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">❓ 规则对照可以当作官方依据吗？</div>
+            <div class="faq-answer">不可以。这里的规则摘要是为了方便日常理解与快速对照，并非官方发布文本。正式引用或裁决请以各运动协会、赛事组织方的最新规则为准。<a href="https://webs-ayxsports.com" class="inline-link">爱游戏体育</a>会尽量提供来源链接，但使用者仍需自行核实。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">❓ 页面内容会定期更新吗？</div>
+            <div class="faq-answer">是的，主要框架和常见问题会按季度或重大规则变动时做一次通览修订。日常小范围调整则视具体信息变化而定。你也可以在<a href="https://webs-ayxsports.com" class="inline-link">爱游戏体育</a>上关注动态更新板块。</div>
+        </div>
+        <div style="margin-top: 18px; font-size: 0.92rem; color: #4b5563; background: #f3f5f8; padding: 12px 16px; border-radius: 12px;">
+            💡 如果你有具体的查询需求，不妨先利用上述场景模块定位，再结合外部资源做交叉比对。这样比自己零散搜索效率更高。
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="footnote">
+        <span>内容参考 · 日常查询辅助 · 以实际信息为准  —  <a href="https://webs-ayxsports.com">爱游戏体育</a></span>
+    </footer>
+</div>
+</body>
+</html>
